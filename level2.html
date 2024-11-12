@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Recipe for Success</title>
+    <style>
+        body {
+            background-image:url("level2.png") ;
+            background-attachment: fixed; 
+            background-size: 100% 99%;/* Tamaño de la imagen */
+            width: 60%; /* Tamaño de la imagen */
+            height: auto;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        #sentence {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        #options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: white;
+            border-color: #75633b;
+            background-color: #75633b;
+        }
+        #feedback {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #timer {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #score {
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>The Recipe for Success</h1>
+        <div id="timer">Time: 5:00</div>
+        <div id="score">Score: 0</div>
+        <div id="sentence"></div>
+        <div id="options"></div>
+        <div id="feedback"></div>
+        <button id="submit">Next</button>
+    </div>
+
+    <script>
+        const pages = [
+            {
+                sentence: "Which of these fruits is generally considered the sweetest?",
+                options: ["Apple", "Banana","Orange", "strawberry"],
+                correct: "Banana"
+            },
+            {
+                sentence: "Is a wooden spoon better or worse for stirring sauces than a metal spoon?",
+                options: ["Better", "Worse", "The same", "Depends on the sauce"],
+                correct: "Better"
+            },
+            {
+                sentence: "Which cooking method is the slowest: ",
+                options: ["Frying", "Grilling", "Baking", "They are all equally slow"],
+                correct: "Baking"
+            },
+            {
+                sentence: "What kitchen utensil is used to chop, slice, and dice food into small pieces, and is often used to prepare ingredients for salads, stir-fries, and soups?",
+                options: ["Wooden Spoon","Chef's Knife", "Can Opener", "Measuring Cups"],
+                correct: "Chef's Knife"
+            },
+            {
+                sentence: "Which type of pan is generally best for making pancakes:",
+                options: [" Cast iron pan", "Any pan will work", "Stainless steel pan", "Non-stick pan"],
+                correct: "Non-stick pan"
+            }
+        ];
+
+        let currentPage = 0;
+        let score = 0;
+        let timeLeft = 300; // 5 minutes in seconds
+
+        const sentenceEl = document.getElementById('sentence');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const submitBtn = document.getElementById('submit');
+        const timerEl = document.getElementById('timer');
+        const scoreEl = document.getElementById('score');
+
+        function updatePage() {
+            sentenceEl.textContent = pages[currentPage].sentence;
+            optionsEl.innerHTML = '';
+            pages[currentPage].options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.addEventListener('click', () => selectOption(option));
+                optionsEl.appendChild(button);
+            });
+            feedbackEl.textContent = '';
+        }
+
+        function selectOption(option) {
+            optionsEl.querySelectorAll('button').forEach(btn => {
+                btn.style.backgroundColor = btn.textContent === option ? '#584b2d' : '';
+                btn.style.color = btn.textContent === option ? 'white' : '';
+            });
+        }
+
+        function checkAnswer() {
+            const selectedOption = optionsEl.querySelector('button[style*="background-color"]');
+            if (!selectedOption) {
+                feedbackEl.textContent = 'Please select an option.';
+                return;
+            }
+
+            const userAnswer = selectedOption.textContent;
+            const correctAnswer = pages[currentPage].correct;
+
+            if (userAnswer === correctAnswer) {
+                feedbackEl.textContent = 'Correct!';
+                score += 20;
+                scoreEl.textContent = `Score: ${score}`;
+                currentPage++;
+
+                if (currentPage < pages.length) {
+                    setTimeout(updatePage, 10);
+                } else {
+                    endGame(true);
+                }
+            } else {
+                feedbackEl.textContent = `Incorrect. Try again!`;
+                score -= 5;
+                scoreEl.textContent = `Score: ${score}`;
+            }
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerEl.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                endGame(false);
+            }
+        }
+
+        function endGame(completed) {
+            if (completed) {
+                alert(`Congratulations! You completed the recipe with a score of ${score}.`);
+                location.href = "level3.html";
+            } else {
+                alert(`Time's up! Your final score is ${score}.`);
+            }
+            // Reset the game
+            currentPage = 0;
+            score = 0;
+            timeLeft = 300;
+            updatePage();
+            updateTimer();
+        }
+
+
+        submitBtn.addEventListener('click', checkAnswer);
+        updatePage();
+        updateTimer();
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Cooking English Game</title>
+    <style>
+        body {
+            background-image:url("Lamis.png") ;
+            background-attachment: fixed; 
+            background-size: 100%;/* Tamaño de la imagen */
+            width: 30%; /* Tamaño de la imagen */
+            width: auto; 
+            height: auto;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50px;
+        }
+        .start-container { 
+            position: absolute;
+            top: 20px;
+            right: 500px;
+            width: 300px;
+            height: 420px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #A65149;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1,6;
+            margin-bottom: 1.5rem;
+        }
+        .start-button {
+            background-color: #75633b;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .start-button:hover {
+            background-color: #BF9FB1;
+        }
+        .feature-list {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .feature-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="start-container">
+        <h1>Welcome to the Cookish!</h1>
+        <p>Are you ready to enhance your English skills while learning about cooking? This interactive game combines language learning with culinary adventures!</p>
+        
+        <div class="feature-list">
+            <h3>Game Features:</h3>
+            <ul>
+                <li>Learn cooking-related English vocabulary</li>
+                <li>Practice verb usage in a fun, interactive way</li>
+                <li>Progress through levels and track your improvement</li>
+                <li>Earn experience points as you play</li>
+            </ul>
+        </div>
+        
+        <p>Click the button below to start your culinary English journey!</p>   
+        <a href="context.html" class="boton">
+            <button class="start-button" onclick="startGame()">Start Cooking & Learning!</button>
+        </a>
+    </div>
+
+    
+</body>
+</html>

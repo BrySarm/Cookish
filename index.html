@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Hanalei+Fill&family=Josefin+Slab&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Hanalei+Fill&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking English Game</title>
+    <style>
+        body {
+          background-image:url("Lam.png") ;
+            background-attachment: fixed; 
+            background-size: 100%;/* Tamaño de la imagen */
+            width: 60%; /* Tamaño de la imagen */
+            width: 100px; 
+            height: auto;/* Ancho del elemento */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .game-container {position: absolute;
+            top: 20px;
+            right: 150px;
+            width: 300px;
+            height: 220px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            flex-direction: 60%;
+            background-color: rgba(228, 181, 191, 0.295);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            background-image: linear-gradient(to bottom,#ec8bcc, #ffffff);
+            background-size: 100% 100%;
+            background-position: 0% 100%;
+            
+            -webkit-text-fill-color: transparent;
+            margin-top: 1px;
+            padding-top: 1px;
+            color: #333; 
+            font-family: "Hanalei Fill", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #af904c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #8d743f;
+        }
+        #game-area, #stats-area {
+            margin-top: 2rem;
+            display: none;
+        }
+        input {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form{
+            border-radius: 30px;
+            font-family: "Josefin Slab", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            
+          }
+
+        #create-account-form{
+          
+          margin: auto;
+          background-color:transparent;
+          position: absolute;
+            top: 0.1px;
+            right: 0.5px;
+            width: 300px;
+            height: 280px;
+            border-radius: 10px;
+            padding: 50px 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="game-container">
+        <h1>Cookish</h1>
+        <div class="menu">
+            <button id="login-btn" onclick="showSection('login')">Log In</button>
+            <button id="create-account-btn" onclick="showSection('create-account')">Create Account</button>
+          </div>
+        
+          <!-- Formulario de log in -->
+          <div class="form"id="login-form" style="display: none;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <button id="login" onclick="switchForm('login')">Log In</button>
+            <button id="create-account-btn" onclick="switchForm('create-account')">Create Account</button>
+          </div> 
+        
+          <!-- Formulario de create account -->
+          <div class="form" id="create-account-form" style="display: none;">
+            <h1>Cookish</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <button id="login-btn" onclick="createAccount()" >Create Account</button>
+            <button id="create-account-btn" onclick="switchForm('login')">log in</button>
+          
+        </div>
+        
+        <div id="success-message" style="display: none;">
+          ¡Registro exitoso!
+        </div>
+          <!-- Pantalla de inicio de sesión -->
+          <div id="login-screen" style="display: none;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Log In">
+          </div>
+        
+          <!-- Pantalla de juego -->
+          <div id="game-screen" style="display: none;">
+            <!-- Contenido del juego -->
+          </div>
+        
+          <script>
+            let currentSection = 'initial';
+        
+            function showSection(section) {
+              if (section === 'login') {
+                document.getElementById('login-btn').style.display = 'none';
+                document.getElementById('create-account-btn').style.display = 'none';
+                document.getElementById('login-form').style.display = 'block';
+              } else if (section === 'create-account') {
+                document.getElementById('login-btn').style.display = 'none';
+                document.getElementById('create-account-btn').style.display = 'none';
+                document.getElementById('create-account-form').style.display = 'block';
+              } else if (section === 'login-screen') {
+                document.getElementById('login-btn').style.display = 'none';
+                document.getElementById('create-account-btn').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'block';
+              } else if (section === 'game-screen') {
+                document.getElementById('login-btn').style.display = 'none';
+                document.getElementById('create-account-btn').style.display = 'none';
+                document.getElementById('game-screen').style.display = 'block';
+              }
+            }
+            function createAccount() {
+  let username = document.getElementById('username').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let password = document.getElementById('password').value.trim();
+
+  if (username === null || username === undefined || email === null || email === undefined || password === null || password === undefined) {
+    alert("Por favor, rellena todos los campos.");
+    return;
+  }
+
+  // Simula la creación de la cuenta
+  alert("Cuenta creada con éxito!");
+  document.getElementById('success-message').style.display = 'block';
+  setTimeout(function() {
+    switchForm('login');
+  }, 200);
+}
+document.getElementById("login").addEventListener("click", function() {
+    location.href = "cooking-game-start-page.html";
+  });
+
+
+
+            document.getElementById('create-account-form').addEventListener('submit', (e) => {
+              e.preventDefault();
+              let username = document.getElementById('username').value;
+              let email = document.getElementById('email').value;
+              let password = document.getElementById('password').value;
+        
+              if (username === "" || email === "" || password === "") {
+                alert("Please fill in all fields.");
+                return;
+              }
+        
+              // Simulate account creation
+              alert("Account created successfully!");
+              showSection('login-screen');
+            });
+        
+            document.getElementById('login-screen').addEventListener('submit', (e) => {
+              e.preventDefault();
+              let username = document.getElementById('username').value;
+              let password = document.getElementById('password').value;
+        
+              if (username === "" || password === "") {
+                alert("Please fill in all fields.");
+                return;
+              }
+        
+              // Simulate login
+              alert("Logged in successfully!");
+              showSection('game-screen');
+            });
+            function switchForm(targetForm) {
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('create-account-form').style.display = 'none';
+
+  if (targetForm === 'login') {
+    document.getElementById('login-form').style.display = 'block';
+  } else {
+    document.getElementById('create-account-form').style.display = 'block';
+  }
+}
+// ...
+
+document.getElementById('create-account-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  let username = document.getElementById('username').value;
+  let password = document.getElementById('password').value;
+
+  if (username === "" || password === "") {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  // Simulate account creation
+  alert("Account created successfully!");
+
+  // Redirige al login-screen
+  switchForm('login');
+
+  // Muestra un mensaje de éxito
+  document.getElementById('success-message').style.display = 'block';
+});
+
+    </script>
+</body>
+</html>
