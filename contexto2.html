@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+            background-image:url("level2.png") ;
+            background-attachment: fixed; 
+            background-size: 100%;/* Tamaño de la imagen */
+            width: 60%; 
+            height: auto;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .start-container { 
+            position: absolute;
+            top: 50px;
+            right: 600px;
+            width: 300px;
+            height: 420px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #A65149;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1,6;
+            margin-bottom: 1.5rem;
+        }
+        .start-button {
+            background-color: #75633b;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .start-button:hover {
+            background-color: #BF9FB1;
+        }
+</style>
+<body>
+    <div class="start-container">
+        <h1>Help Superlative</h1>
+        <p>There are two main ways to form comparatives in English:</p>
+        
+        <div class="feature-list">
+            
+            <ul>
+                <li>Adding -er:
+            Singular nouns: add -er to the end:</li><br>
+                <li>big - bigger, hot - hotter</li><br>
+                <li>Plural nouns: add -er to the end</li>
+                <li>cats - cater, dogs - dogger</li>
+                <li>Using more:
+            Adjectives: add "more" before the adjective </li><br>
+            <li>happy - more happy, fast - more fast</li>
+                <li>Adverbs: add "more" before the adverb </li>
+                <li>quickly - more quickly, loudly - more loudly</li><br>
+            </ul>
+        </div>
+        
+        <p>Click the button below to start your culinary English journey!</p>   
+        <a href="level2.html" class="boton">
+            <button class="start-button" onclick="startGame()">Start Cooking & Learning!</button>
+        </a>
+    </div>
+</body>
+</html>

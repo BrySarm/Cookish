@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+            background-image:url("Lamis.png") ;
+            background-attachment: fixed; 
+            background-size: 100%;/* Tamaño de la imagen */
+            width: 60%; 
+            height: auto;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .start-container { 
+            position: absolute;
+            top: 50px;
+            right: 600px;
+            width: 300px;
+            height: 420px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #A65149;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1,6;
+            margin-bottom: 1.5rem;
+        }
+        .start-button {
+            background-color: #75633b;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .start-button:hover {
+            background-color: #BF9FB1;
+        }
+</style>
+<body>
+    <div class="start-container">
+        <h1>Help Superlative</h1>
+        <p>that are used to describe the highest or lowest degree of a quality, property, or characteristic. They are formed by adding the suffix "-est" to the adjective, except for some irregular forms.</p>
+        
+        <div class="feature-list">
+            
+            <ul>
+                <li>Adjectives that end in "-e" or "-ie" become superlatives by adding "-st":</li><br>
+                <li>Big → biggest → the biggest</li><br>
+                <li>Adjectives that end in "-y" change the "-y" to "-i" and then add "-est":</li>
+                <li>Happy → happiest → the happiest</li><br>
+                <li>Adjectives that end in "-ful" or "-less" become superlatives by adding "-est":</li>
+                <li>Full → fullest → the fullest</li><br>
+            </ul>
+        </div>
+        
+        <p>Click the button below to start your culinary English journey!</p>   
+        <a href="recipe-for-success-game.html" class="boton">
+            <button class="start-button" onclick="startGame()">Start Cooking & Learning!</button>
+        </a>
+    </div>
+</body>
+</html>
