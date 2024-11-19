@@ -73,29 +73,29 @@
 
     <script>
         const pages = [
-            {
-                sentence: "Preheat the oven to 350°F. _____ (to preheat) the oven for 10 minutes.",
-                options: ["prehead", "preheated", "preheat", "have preheated"],
-                correct: "preheat"
+            { 
+                sentence: "What is the oldest type of bread that can be found in a market?",
+                options: ["The newest", "The oldest", "The freshest", "The most expensive"],
+                correct: "The oldest"
             },
             {
-                sentence: "Chop the chicken into small pieces. _____ (to chop) the chicken quickly.",
-                options: ["chopp", "chop", "chopping", "have chopped"],
-                correct: "chop"
+                sentence: "What is the most popular dish in a restaurant?",
+                options: ["The most expensive", "The fastest", "The best-selling", "The most difficult to make"],
+                correct: "The best-selling"
             },
             {
-                sentence: "Sauté the onions and bell peppers in a pan. _____ (to sauté) the vegetables until they're tender.",
-                options: ["sauté", "sautéed", "sautéing", "have sautéed"],
-                correct: "sauté"
+                sentence: "What is the hottest soup that can be found on a menu?",
+                options: ["The hottest", "The coldest", "The smoothest", "The thickest"],
+                correct: "The hottest"
             },
             {
-                sentence: "Add the chicken to the pan and _____ (to cook) for 5 minutes.",
-                options: ["coock", "cookk", "cooking", "cook"],
-                correct: "cook"
+                sentence: "What is the crispiest bread that can be found in a bakery?",
+                options: ["The softest", "The crispiest", "The sweetest", "The saltiest"],
+                correct: "The crispiest"
             },
             {
-                sentence: "Serve the fajitas with warm flour tortillas. _____ (to serve) the fajitas hot.",
-                options: ["serve", "served", "serving", "have served"],
+                sentence: "Who is the most famous chef in the culinary industry?",
+                options: ["The youngest", "The richest", "The most famous", "The poorest"],
                 correct: "serve"
             }
         ];
@@ -173,8 +173,8 @@
 
         function endGame(completed) {
             if (completed) {
-                alert(`Congratulations! You completed the recipe with a score of ${score}.`);
-                location.href = "level3.html";
+                alert(`Congratulations! You completed the recipe with a score of ${score}, now the next level.`);
+                location.href = "level2.html";
             } else {
                 alert(`Time's up! Your final score is ${score}.`);
             }
